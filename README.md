@@ -1,2 +1,2 @@
 # Weighted_Graph
-task 1 OOP in java
+### EX1 OOP in java
