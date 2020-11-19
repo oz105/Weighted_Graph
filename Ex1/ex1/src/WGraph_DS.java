@@ -1,4 +1,4 @@
-package ex1;
+package ex1.src;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class WGraph_DS implements weighted_graph, java.io.Serializable {
     /**
      * Inner Class that represents Vertex in the weighed graph .
      */
-    private static class NodeInfo implements node_info, java.io.Serializable {
+    private class NodeInfo implements node_info, java.io.Serializable {
         private int key;
         private String info;
         private double tag;
@@ -27,7 +27,7 @@ public class WGraph_DS implements weighted_graph, java.io.Serializable {
         //CONSTRUCTOR
         public NodeInfo(int key) {
             this.key = key;
-            this.tag = Integer.MAX_VALUE;
+            this.tag = -1 ;
             this.info = "";
         }
 
@@ -114,9 +114,10 @@ public class WGraph_DS implements weighted_graph, java.io.Serializable {
             return Objects.hash(key);
         }
 
+
         @Override
         public String toString() {
-            return "" + key;
+            return "" + key ;
         }
     }
 
@@ -363,7 +364,7 @@ public class WGraph_DS implements weighted_graph, java.io.Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         WGraph_DS wGraph_ds = (WGraph_DS) o;
         return this.nodeSize() == wGraph_ds.nodeSize() &&
-                this.edgeSize == wGraph_ds.edgeSize() && this.getMC() == wGraph_ds.getMC() &&
+                this.edgeSize == wGraph_ds.edgeSize() &&
                 Objects.equals(edgesOfGraph, wGraph_ds.edgesOfGraph) &&
                 Objects.equals(verticesOfGraph, wGraph_ds.verticesOfGraph);
     }

@@ -1,4 +1,4 @@
-package ex1;
+package ex1.src;
 
 import java.io.*;
 import java.util.*;
@@ -78,7 +78,7 @@ public class WGraph_Algo implements weighted_graph_algorithms ,java.io.Serializa
     }
 
     /**
-     * returns the the shortest path between src to dest - as an ordered List of nodes:
+     * returns the shortest path between src to dest - as an ordered List of nodes:
      * src--> n1-->n2-->...dest
      * Use in dijkstra algorithm.
      * see: https://en.wikipedia.org/wiki/Shortest_path_problem
@@ -94,21 +94,29 @@ public class WGraph_Algo implements weighted_graph_algorithms ,java.io.Serializa
         int tempkey = dest ;
         boolean flag = true ;
         LinkedList<node_info> path = new LinkedList<node_info>() ;
-        Dijkstra(wGraphAlgo.getNode(src));
-        if(!(wGraphAlgo.getNode(dest).getTag() < Integer.MAX_VALUE)) return null ;
         if(src==dest) {
             path.add(wGraphAlgo.getNode(src));
             return path ;
         }
+        Dijkstra(wGraphAlgo.getNode(src));
+        if((wGraphAlgo.getNode(dest).getTag() == Integer.MAX_VALUE)) return null ;
         path.addLast(wGraphAlgo.getNode(dest)); ;
         while (flag) {
+//                if(NumberOrNot(wGraphAlgo.getNode(tempkey).getInfo())){
+            try{
+                tempkey = Integer.parseInt(wGraphAlgo.getNode(tempkey).getInfo());
+                path.addFirst(wGraphAlgo.getNode(tempkey)); ;
+            }catch (NumberFormatException e) {
+                System.out.println("there is a bug");
+                return null ;
+            }catch (Exception e ){
+                System.out.println("there is a bug");
+                return null ;
+            }
             if(tempkey == src){
                 flag = false ;
             }
-            else if(NumberOrNot(wGraphAlgo.getNode(tempkey).getInfo())){
-                tempkey = Integer.parseInt(wGraphAlgo.getNode(tempkey).getInfo());
-                path.addFirst(wGraphAlgo.getNode(tempkey)); ;
-            }
+//            }
         }
         return path;
     }
@@ -174,7 +182,8 @@ public class WGraph_Algo implements weighted_graph_algorithms ,java.io.Serializa
      * In the end of the algorithm each node will hold 2 things
      * 1.the smallest weight from src node - will be store in the Tag.
      * 2.from who he gets this weight - will be store in the Info.
-     * if the Info contains a number (the key from who he gets the weight its means he visited).
+     * if the Info contains a number
+     * (the key from who he gets his weight its means he he already have been visited).
      * @param src
      * @return
      */
@@ -196,18 +205,16 @@ public class WGraph_Algo implements weighted_graph_algorithms ,java.io.Serializa
         while(!(PQ.isEmpty())) {
             if(PQ.peek() != null) {
                 tempKey = PQ.poll();
-                for (node_info n : wGraphAlgo.getV(tempKey.getKey())) {
-                   weight = tempKey.getTag() + (wGraphAlgo.getEdge(n.getKey(),tempKey.getKey())) ;
-                   if(!(NumberOrNot(n.getInfo()))) {
-                       PQ.add(n) ;
-                       n.setTag(weight);
-                       n.setInfo(""+tempKey.getKey());
-                       countVisit ++ ;
+                if(tempKey != null) {
+                    for (node_info n : wGraphAlgo.getV(tempKey.getKey())) {
+                        weight = tempKey.getTag() + (wGraphAlgo.getEdge(n.getKey(),tempKey.getKey())) ;
+                        if(!(NumberOrNot(n.getInfo())) || n.getTag() > weight ) {
+                            PQ.add(n) ;
+                            n.setTag(weight);
+                            n.setInfo(""+tempKey.getKey());
+                            countVisit ++ ;
+                        }
                     }
-                   else if(n.getTag() > weight) {
-                       n.setTag(weight);
-                       n.setInfo(""+tempKey.getKey());
-                   }
                 }
             }
         }
@@ -268,3 +275,4 @@ public class WGraph_Algo implements weighted_graph_algorithms ,java.io.Serializa
         return countVisit;
     }
 }
+
