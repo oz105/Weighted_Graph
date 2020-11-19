@@ -54,8 +54,8 @@ this class deals in more complex functions on the graph itself with the implemen
 1. init - this method initialize the graph on which this set of algorithms operates on .
 2. getGraph - this method will return the graph of which this class works on . 
 3. copy - this method will return a weighted_graph with will be deep copy of the graph we init .
-4. isConnected - this method will check if the graph is Connectivity or not by use BFS algorithm 
-I Used here in BFS algorithm and not in Dijkstra algorithm becasue BFS algorithm more efficient, and for Connectivity testing it is enough.
+4. isConnected - this method will check if the graph is Connectivity or not by use BFS algorithm
+I Used here in BFS algorithm instead of Dijkstra algorithm becasue BFS algorithm more efficient, and for Connectivity testing it is enough.
 
 
 
