@@ -156,11 +156,6 @@ class WGraph_DSTest {
             );
             finalRand.addNode(12 * 8);
             assertEquals(size + 1, finalRand.getV().size(), "after add nodes should be " + size + "1");
-//            Collection<node_info> v = g.getV();
-//        Iterator<node_info> iter = v.iterator();
-//        while (iter.hasNext()) {
-//            node_info n = iter.next();
-//            assertNotNull(n);
             i++;
         }
         emptyGraph.addNode(0);
