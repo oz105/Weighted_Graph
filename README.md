@@ -1,7 +1,6 @@
 # Weighted_Graph
 ### EX1 OOP in java
-
-	                                                                                                                                                                     Task 0	
+Task 1	
 
 ### Weighted graph = a graph whose edges have weights
 
