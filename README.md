@@ -44,11 +44,6 @@ the secound Class WGraph_Algo implements the interfaces weighted_graph_algorithm
 this class deals in more complex functions on the graph itself with the implement of BFS and Dijkstra algorithm .
 
 
-![alt_text](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
-
-
-
-
 
 ### the methods we have in this Class are :
 1. init - this method initialize the graph on which this set of algorithms operates on .
@@ -80,12 +75,34 @@ I Used here in BFS algorithm instead of Dijkstra algorithm becasue BFS algorithm
 
 
 
+
+
 5. shortestPathDist - we need to give 2 keys of nodes and this method will returns the length of the shortest path between them 
 if no such path it will returns -1. Use in Dijkstra algorithm
 6. shortestPath - we need to give 2 keys of nodes and this method will reurns a List of nodes of the shortest path between them
 if no such path it will returns null. Use in Dijkstra algorithm.
 7. save - saves this weighted graph to the given file name. use Serializable.
-8. load - This method load a graph to this graph algorithm . if the file was successfully loaded will return true otherwise return false . use Serializable
+8. load - This method load a graph to this graph algorithm . if the file was successfully loaded will return true otherwise return false . use Serializable.
+
+
+## Dijkstra algorithm:
+
+
+
+
+
+
+![alt_text](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+
+
+
+
+
+
+
+
+
+
 9. Dijkstra - this method implements the Dijkstra algorithm .
 in this method we will mark all the nodes as unvisited (empty info = unvisited , info = "")
 and we will mark the weight of every node as infinity (Tag = Integer.MAX_VALUE)
